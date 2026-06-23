@@ -1,26 +1,146 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap');
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --font-sans: var(--font-sans);
+  --font-heading: Satoshi, var(--font-sans);
+  --font-mono: var(--font-geist-mono);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --background: #FAF8F4;
+  --foreground: #1C1917;
+  --card: #FAF8F4;
+  --card-foreground: #1C1917;
+  --popover: #FAF8F4;
+  --popover-foreground: #1C1917;
+  --primary: #6B1E28;
+  --primary-foreground: #FAF8F4;
+  --secondary: #EFECE6;
+  --secondary-foreground: #6B1E28;
+  --muted: #F5F2EB;
+  --muted-foreground: #78716C;
+  --accent: #6B1E28;
+  --accent-foreground: #FAF8F4;
+  --destructive: #EF4444;
+  --border: #E5E0D8;
+  --input: #E5E0D8;
+  --ring: #6B1E28;
+  --chart-1: #6B1E28;
+  --chart-2: #EFECE6;
+  --chart-3: #78716C;
+  --chart-4: #8B5CF6;
+  --chart-5: #EC4899;
+  --radius: 0.5rem;
+  --sidebar: #FAF8F4;
+  --sidebar-foreground: #1C1917;
+  --sidebar-primary: #6B1E28;
+  --sidebar-primary-foreground: #FAF8F4;
+  --sidebar-accent: #EFECE6;
+  --sidebar-accent-foreground: #6B1E28;
+  --sidebar-border: #E5E0D8;
+  --sidebar-ring: #6B1E28;
+}
+
+.dark {
+  --background: #120E0F;
+  --foreground: #F5F2EB;
+  --card: #1C1517;
+  --card-foreground: #F5F2EB;
+  --popover: #1C1517;
+  --popover-foreground: #F5F2EB;
+  --primary: #E05367;
+  --primary-foreground: #120E0F;
+  --secondary: #2C2023;
+  --secondary-foreground: #E05367;
+  --muted: #241A1C;
+  --muted-foreground: #A8A29E;
+  --accent: #E05367;
+  --accent-foreground: #120E0F;
+  --destructive: #EF4444;
+  --border: #2C2023;
+  --input: #2C2023;
+  --ring: #E05367;
+  --sidebar: #120E0F;
+  --sidebar-foreground: #F5F2EB;
+  --sidebar-primary: #E05367;
+  --sidebar-primary-foreground: #120E0F;
+  --sidebar-accent: #2C2023;
+  --sidebar-accent-foreground: #E05367;
+  --sidebar-border: #2C2023;
+  --sidebar-ring: #E05367;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased selection:bg-primary selection:text-primary-foreground;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
